@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { BaseCrudService } from '@/lib/mock-service';
 import { AboutMe, DesignPhilosophy, PortfolioProjects } from '@/entities';
+import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 
 // --- Animation Components ---
 
@@ -97,7 +98,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#212121] text-[#F2E3CF] font-sans selection:bg-[#E35342] selection:text-white overflow-x-hidden">
-      <Header />
 
       {isLoading ? (
         <div className="min-h-screen flex items-center justify-center">
@@ -107,79 +107,85 @@ export default function HomePage() {
         <>
 
           {/* --- Hero Section --- */}
-          <section className="relative min-h-[90vh] flex items-center justify-center py-20 px-4 md:px-8 bg-[#212121]">
+          <section className="relative bg-[#F2E3CF] overflow-hidden pt-8">
+            <Header />
 
-            <FadeIn className="w-full max-w-5xl relative z-10">
-              {/* The "Notebook" Card */}
-              <div className="bg-[#F2E3CF] rounded-[2.5rem] p-8 md:p-16 shadow-2xl relative overflow-hidden border-l-[12px] border-[#E35342] transform rotate-1 hover:rotate-0 transition-transform duration-700 ease-out">
-                {/* Grid Pattern on Card */}
-                <div
-                  className="absolute inset-0 opacity-20 pointer-events-none"
-                  style={{
-                    backgroundImage: 'linear-gradient(#E35342 1px, transparent 1px), linear-gradient(90deg, #E35342 1px, transparent 1px)',
-                    backgroundSize: '40px 40px'
-                  }}
-                />
+            {/* Spiderman Overlay - Adjust positioning here:
+                top: vertical position from section top
+                right: horizontal position from section right
+                w: width of the image (e.g., w-[500px])
+            */}
+            <motion.img
+              src="/chalk_images/spidyy.png"
+              alt="Spiderman"
+              className="absolute top-[-60px] right-[-26px] w-[400px] md:w-[300px] h-auto z-40 pointer-events-none origin-top-right transition-all duration-300"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              style={{
+                // We'll let it be mostly static or subtlely move
+                // since syncing with the 3D tilt is complex
+              }}
+            />
 
-                <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-                  <div className="space-y-6">
-                    <div className="inline-block">
-                      <span className="text-[#E35342] font-bold tracking-wider uppercase text-sm border border-[#E35342] px-3 py-1 rounded-full">
-                        Product Designer
-                      </span>
-                    </div>
-
-                    <h1 className="text-[#E35342] text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight">
-                      Software should <br />
-                      <span className="font-serif italic font-normal">feel</span> natural.
-                    </h1>
-
-                    <p className="text-[#E35342]/80 text-lg md:text-xl max-w-md leading-relaxed">
-                      {aboutData?.bio || "Crafting digital experiences that feel human, intuitive, and delightful."}
-                    </p>
-
-                    <div className="pt-4">
-                      <Button
-                        onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="bg-[#E35342] hover:bg-[#c44232] text-[#F2E3CF] rounded-full px-8 py-6 text-lg font-medium transition-all hover:scale-105 shadow-lg hover:shadow-[#E35342]/30"
-                      >
-                        See my work
-                      </Button>
-                    </div>
+            <ContainerScroll titleComponent={null}>
+              <div className="relative h-full w-full grid md:grid-cols-2 gap-8 items-center p-8 md:p-16">
+                <div className="space-y-6 text-left">
+                  <div className="inline-block">
+                    <span className="text-[#E35342] font-bold tracking-wider uppercase text-sm border border-[#E35342] px-3 py-1 rounded-full">
+                      Product Designer
+                    </span>
                   </div>
 
-                  <div className="relative hidden md:block">
-                    {/* Decorative "Sticker" elements */}
-                    <motion.div
-                      animate={{ rotate: [0, 5, 0] }}
-                      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                      className="absolute -top-10 -right-10 w-32 h-32 bg-[#E35342] rounded-full opacity-10 blur-2xl"
-                    />
+                  <h1 className="text-[#E35342] text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
+                    Software should <br />
+                    <span className="font-serif italic font-normal">feel</span> natural.
+                  </h1>
 
-                    {aboutData?.profileImage ? (
-                      <div className="relative transform rotate-3 hover:rotate-0 transition-all duration-500">
-                        <div className="absolute inset-0 bg-[#E35342] rounded-2xl translate-x-2 translate-y-2" />
-                        <Image
-                          src={aboutData.profileImage}
-                          alt="Jackie Zhang"
-                          className="relative w-full aspect-[4/5] object-cover rounded-2xl border-4 border-white shadow-xl grayscale hover:grayscale-0 transition-all duration-500"
-                        />
-                        {/* Tape effect */}
-                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-white/40 backdrop-blur-sm rotate-2 shadow-sm" />
-                      </div>
-                    ) : (
-                      <div className="w-full aspect-square bg-[#E35342]/10 rounded-full flex items-center justify-center border-2 border-dashed border-[#E35342]/30">
-                        <span className="text-[#E35342] font-serif italic text-2xl">Illustration</span>
-                      </div>
-                    )}
+                  <p className="text-[#E35342]/80 text-lg md:text-xl max-w-md leading-relaxed">
+                    {aboutData?.bio || "Designer, thinker, and maker based in Cape Town. Crafting digital experiences that feel human, intuitive, and delightful."}
+                  </p>
+
+                  <div className="pt-4">
+                    <Button
+                      onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+                      className="bg-[#E35342] hover:bg-[#c44232] text-[#F2E3CF] rounded-full px-8 py-6 text-lg font-medium transition-all hover:scale-105 shadow-lg hover:shadow-[#E35342]/30"
+                    >
+                      See my work
+                    </Button>
                   </div>
                 </div>
+
+                <div className="relative flex justify-center">
+                  {aboutData?.profileImage ? (
+                    <div className="relative transform rotate-3 hover:rotate-0 transition-all duration-500 w-full max-w-[300px] aspect-[4/5]">
+                      <div className="absolute inset-0 bg-[#E35342] rounded-2xl translate-x-2 translate-y-2" />
+                      <Image
+                        src={aboutData.profileImage}
+                        alt="Jackie Zhang"
+                        className="relative w-full h-full object-cover rounded-2xl border-4 border-white shadow-xl grayscale hover:grayscale-0 transition-all duration-500"
+                      />
+                      {/* Tape effect */}
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-white/40 backdrop-blur-sm rotate-2 shadow-sm" />
+                    </div>
+                  ) : (
+                    <div className="w-64 h-64 bg-[#E35342]/10 rounded-full flex items-center justify-center border-2 border-dashed border-[#E35342]/30">
+                      <span className="text-[#E35342] font-serif italic text-2xl">Illustration</span>
+                    </div>
+                  )}
+
+                  {/* Decorative "Sticker" elements */}
+                  <motion.div
+                    animate={{ rotate: [0, 5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-10 -right-10 w-32 h-32 bg-[#E35342] rounded-full opacity-10 blur-2xl"
+                  />
+                </div>
               </div>
-            </FadeIn>
+            </ContainerScroll>
           </section>
 
           {/* --- Work Section (Scattered Grid) --- */}
-          <section id="work" className="py-32 px-4 md:px-8 relative">
+          <section id="work" className="pt-10 pb-32 px-4 md:px-8 relative">
             <div className="container mx-auto max-w-6xl">
               <FadeIn className="mb-20 text-center">
                 <h2 className="text-4xl md:text-6xl font-bold mb-6">Selected Work</h2>

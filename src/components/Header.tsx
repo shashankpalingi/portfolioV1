@@ -13,36 +13,35 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-foreground/10">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link 
-            to="/" 
-            className="text-foreground font-heading text-xl font-bold hover:text-primary transition-colors duration-200"
+    <header className="relative z-50">
+      <div className="container mx-auto px-4 py-0">
+        <div className="relative flex items-center justify-center">
+          {/* Logo on the left */}
+          <Link
+            to="/"
+            className="absolute left-0 text-black font-heading text-2xl font-bold hover:text-primary transition-colors duration-200"
           >
-            jackiezhang.co.za
+            :)
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden md:flex items-center gap-12">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-foreground hover:text-primary transition-colors duration-200 font-paragraph ${
-                  location.pathname === item.path ? 'text-primary' : ''
-                }`}
+                className={`text-black hover:text-[#E35342] transition-colors duration-200 font-paragraph text-2xl font-medium ${location.pathname === item.path ? 'text-[#E35342]' : ''
+                  }`}
               >
                 {item.name}
               </Link>
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - on the right */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-foreground hover:text-primary transition-colors duration-200"
+            className="md:hidden absolute right-0 text-black hover:text-[#E35342] transition-colors duration-200"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -57,9 +56,8 @@ export default function Header() {
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`text-foreground hover:text-primary transition-colors duration-200 font-paragraph ${
-                  location.pathname === item.path ? 'text-primary' : ''
-                }`}
+                className={`text-black hover:text-[#E35342] transition-colors duration-200 font-paragraph text-xl ${location.pathname === item.path ? 'text-[#E35342]' : ''
+                  }`}
               >
                 {item.name}
               </Link>
