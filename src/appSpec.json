@@ -1,0 +1,220 @@
+{
+  "id": "20557edf-fef0-4b0e-ae6a-1e71e51a56c1",
+  "initialPrompt": "Create a website inspired by https://jackiezhang.co.za/?ref__=killerportfolio",
+  "siteName": "jackiezhang.co.za",
+  "brandBook": {
+    "tones": [
+      "Playful",
+      "Approachable",
+      "Inspiring",
+      "Personal",
+      "Professional",
+      "Dynamic"
+    ],
+    "designStyle": {
+      "primaryStyle": [
+        "Playful",
+        "Interactive",
+        "Parallax-driven"
+      ],
+      "supportingStyles": [
+        "Organic",
+        "Rounded",
+        "Layered",
+        "Storytelling",
+        "High-Contrast"
+      ]
+    },
+    "toneOfVoice": "Engaging, approachable, and inspiring, reflecting a passion for impactful design and personal stories, infused with a sense of playful discovery.",
+    "graphicElements": {
+      "icons": "Clean, minimalist line icons, potentially with a subtle rounded aesthetic to match the overall style. Use primary or accent colors.",
+      "stickers": "",
+      "illustrations": "Abstract, organic shapes or playful character illustrations that complement the 'Playful' tone. Can be used as layered elements in parallax sections."
+    },
+    "designSummary": "**The Interactive Narrative Canvas: A Playful Parallax Journey**\n\nThe Vision: To create an immersive and engaging portfolio experience that mirrors Jackie Zhang's personal journey and design philosophy. The design will leverage dynamic parallax scrolling and layered elements to tell a compelling story, making the user feel like they are actively exploring Jackie's world. The 'Playful' personality will infuse the site with joy, approachability, and a sense of delightful discovery, ensuring that even complex design concepts are presented in an accessible and memorable way.\n\n**Execution Blueprint:**\n1. Parallax as the Primary Narrative Driver: Implement multi-layered parallax effects across sections to create depth and guide the user through the content sequentially, emphasizing impactful moments.\n2. Organic & Rounded Forms: Utilize rounded corners extensively on containers, buttons, and interactive elements to embody the 'Playful' and approachable aesthetic.\n3. Vibrant, High-Contrast Palette: Employ the specified dark background with bright, saturated accent colors to create visual energy and ensure key elements pop.\n4. Typographic Hierarchy with Personality: Use the distinct heading font for impact and a more approachable font for body text, ensuring readability while maintaining a friendly tone.\n5. Interactive Delight: Incorporate subtle, bouncy animations on hover and scroll to enhance user engagement and reinforce the playful, joyful experience.",
+    "layout": {
+      "grid": {
+        "margins": "Generous, especially vertical margins between full-bleed sections to emphasize the scroll-driven narrative.",
+        "padding": "Consistent internal padding within content blocks, typically 20-40px, to ensure text legibility.",
+        "compositionApproach": "Full-bleed sections with layered, overlapping elements, driven by a 12-column grid for initial placement but allowing for intentional breaks and asymmetry.",
+        "spacing": {
+          "gaps": "Base unit: 10px. Grid gaps are multiples of 10px, e.g., 20px, 30px, 40px, to maintain rhythm.",
+          "rows": "Variable, determined by content and parallax effect needs.",
+          "columns": "Flexible, based on a 12-column system.",
+          "compositionApproach": "Not specified"
+        }
+      },
+      "layoutDna": {
+        "contrastSpectrum": "High contrast between dark backgrounds and light text/accents, creating a dramatic and engaging visual experience.",
+        "densitySpectrum": "Spacious, with significant negative space to allow elements to breathe and parallax effects to be prominent.",
+        "textVsImageEmphasis": "Balanced, with large, impactful imagery and typography working in tandem. Images often serve as backgrounds or layered elements that interact with text via parallax.",
+        "complexitySpectrum": "Visually complex due to layering and parallax, but intuitively navigable through clear sequential storytelling and distinct sectioning.",
+        "gridAlignmentSpectrum": "Intentionally broken and layered, utilizing a flexible grid system that allows elements to overlap and break boundaries, enhancing the parallax effect.",
+        "negativeSpaceUsage": "Generous and intentional, used to frame content, create depth, and guide the user's eye through the narrative flow."
+      },
+      "heroSectionLayout": "**The Layered Reveal**\nComposition (Tailwind Spec): Main container (h-screen grid place-items-center p-8). A background image/video layer (absolute inset-0 z-0) with `motion.div` for parallax. A foreground text container (relative z-10) with `flex flex-col items-center text-center`.\nSignature Hook (Framer Motion Spec): Parent container uses `useScroll` to drive `y` transform on background layer (`translateY`). Headline 'Jackie Zhang: Product Designer' uses `variants` with `transition: { staggerChildren: 0.04 }`. Each `motion.span` has a variant with `initial={{ opacity: 0, y: 20 }}` and `animate={{ opacity: 1, y: 0 }}`."
+    },
+    "components": {
+      "images": "Layout Role: Full-bleed background with parallax effect, or as layered elements that break grid constraints. | Gallery Type: Asymmetrical placement, overlapping text columns by 20-40px to create depth. Horizontal scroll galleries with oversized items.",
+      "buttons": "Primary: background-color: #E35342, color: #FFFFFF, border-radius: 15px, padding: 12px 24px, font-weight: 600, transition: 'transform 0.3s ease-out'. Secondary: background-color: transparent, color: #F2E3CF, border: 1px solid #F2E3CF, border-radius: 15px, padding: 12px 24px. Hover effects should be bouncy and subtle.",
+      "containers": "Method: Background Color/Image with Parallax. Style: Large rounded corners (15px), significant vertical margins (80px+), subtle box-shadows for depth."
+    },
+    "palette": {
+      "colors": {
+        "customColors": [
+          {
+            "name": "accent",
+            "value": "#F2E3CF"
+          },
+          {
+            "name": "destructive",
+            "value": "#ff0000"
+          },
+          {
+            "name": "destructiveForeground",
+            "value": "#FFFFFF"
+          }
+        ],
+        "background": "#212121",
+        "secondary": "#3A3A3A",
+        "foreground": "#F2E3CF",
+        "secondaryForeground": "#F2E3CF",
+        "primaryForeground": "#FFFFFF",
+        "primary": "#E35342"
+      },
+      "paletteUsageGuide": "The primary color (#E35342) is for key calls-to-action and highlights. The background (#212121) provides a dark, immersive canvas. The foreground/accent color (#F2E3CF) is used for primary text, links, and secondary UI elements, ensuring high contrast. Secondary color (#3A3A3A) is for subtle backgrounds or less prominent elements.",
+      "paletteAccessibilityNotes": "High contrast is maintained between primary/accent colors and the dark background, adhering to WCAG AA standards for text legibility. Ensure sufficient contrast for all interactive elements."
+    },
+    "typography": {
+      "headings": {
+        "font": {
+          "fontFamily": "Averia Serif Libre",
+          "role": "heading",
+          "fontJustification": ""
+        },
+        "headingsAccessibilityNotes": "Ensure sufficient font size and weight for headings to be easily distinguishable from body text. Maintain adequate line spacing.",
+        "headingsSimilarFonts": [],
+        "headingsUsageGuide": "Use 'Averia Serif Libre' for all major headings and titles to create a strong, distinctive visual anchor. Its serif style adds a touch of personality and impact."
+      },
+      "paragraphs": {
+        "font": {
+          "fontFamily": "Gochi Hand",
+          "role": "body",
+          "fontJustification": ""
+        },
+        "paragraphsUsageGuide": "Employ 'Gochi Hand' for body text and descriptive content to convey a personal, approachable, and playful tone. This font should be used judiciously to maintain readability for longer passages.",
+        "paragraphsSimilarFonts": [],
+        "paragraphsAccessibilityNotes": "Due to the script-like nature of 'Gochi Hand', ensure it is used at a sufficiently large size and with generous line height to maintain readability for all users. Consider using a more standard sans-serif for critical information if readability becomes an issue."
+      },
+      "customFontFamilies": {},
+      "fontSizes": [
+        {
+          "name": "xs",
+          "size": "0.75rem",
+          "lineHeight": "1.2",
+          "letterSpacing": "0.02em",
+          "fontWeight": "400"
+        },
+        {
+          "name": "sm",
+          "size": "0.875rem",
+          "lineHeight": "1.3",
+          "letterSpacing": "0.03em",
+          "fontWeight": "400"
+        },
+        {
+          "name": "base",
+          "size": "1rem",
+          "lineHeight": "1.5",
+          "letterSpacing": "0.04em",
+          "fontWeight": "400"
+        },
+        {
+          "name": "lg",
+          "size": "1.125rem",
+          "lineHeight": "1.5",
+          "letterSpacing": "0.04em",
+          "fontWeight": "500"
+        },
+        {
+          "name": "xl",
+          "size": "1.25rem",
+          "lineHeight": "1.4",
+          "letterSpacing": "0.05em",
+          "fontWeight": "500"
+        },
+        {
+          "name": "2xl",
+          "size": "1.5rem",
+          "lineHeight": "1.3",
+          "letterSpacing": "0.05em",
+          "fontWeight": "600"
+        },
+        {
+          "name": "3xl",
+          "size": "1.875rem",
+          "lineHeight": "1.2",
+          "letterSpacing": "0.06em",
+          "fontWeight": "600"
+        },
+        {
+          "name": "4xl",
+          "size": "2.25rem",
+          "lineHeight": "1.2",
+          "letterSpacing": "0.07em",
+          "fontWeight": "700"
+        },
+        {
+          "name": "5xl",
+          "size": "3rem",
+          "lineHeight": "1.1",
+          "letterSpacing": "0.08em",
+          "fontWeight": "700"
+        },
+        {
+          "name": "6xl",
+          "size": "3.75rem",
+          "lineHeight": "1.1",
+          "letterSpacing": "0.09em",
+          "fontWeight": "800"
+        },
+        {
+          "name": "7xl",
+          "size": "4.5rem",
+          "lineHeight": "1.05",
+          "letterSpacing": "0.1em",
+          "fontWeight": "800"
+        },
+        {
+          "name": "8xl",
+          "size": "6rem",
+          "lineHeight": "1",
+          "letterSpacing": "0.12em",
+          "fontWeight": "900"
+        },
+        {
+          "name": "9xl",
+          "size": "8rem",
+          "lineHeight": "1",
+          "letterSpacing": "0.15em",
+          "fontWeight": "900"
+        }
+      ],
+      "welcomeSectionTypography": {
+        "placement": "Centered, full-screen overlay or hero section.",
+        "implementation": "Large, impactful 'Averia Serif Libre' headline with subtle parallax effect on scroll. Body text in 'Gochi Hand' below, also with gentle parallax."
+      }
+    },
+    "originImagesUrls": []
+  },
+  "attachments": {
+    "contentImagesUrls": [
+      "https://static.wixstatic.com/media/bc7755_f1933ee8f44443b69977904b940c0b67~mv2.png"
+    ],
+    "inspirationImagesUrls": [
+      "https://wixmp-c562ea68f10846b458285ce5.wixmp.com/scraped-screenshots/screenshot-1770545131384.webp"
+    ]
+  },
+  "status": "READY",
+  "plan": "\n\n```json\n{\n  \"sections\": [\n    {\n      \"id\": \"overview\",\n      \"title\": \"## Overview\",\n      \"content\": \"A single-page portfolio website with parallax scrolling effects showcasing a designer's work, philosophy, and background with a dark, playful aesthetic.\"\n    },\n    {\n      \"id\": \"key-features\",\n      \"title\": \"## Key features\",\n      \"content\": \"- **View Portfolio Information**: Display designer's work, philosophy, and personal background in a scrollable format.\\n- **View Design Philosophy**: Showcase three core design beliefs with visual emphasis.\\n- **View About Information**: Present personal background and professional approach.\\n- **Contact Form**: Allow visitors to submit inquiries and collaboration requests.\",\n      \"metadata\": [\n        { \"id\": \"view-portfolio-information\", \"name\": \"View Portfolio Information\" },\n        { \"id\": \"view-design-philosophy\", \"name\": \"View Design Philosophy\" },\n        { \"id\": \"view-about-information\", \"name\": \"View About Information\" },\n        { \"id\": \"contact-form\", \"name\": \"Contact Form\" }\n      ]\n    },\n    {\n      \"id\": \"structure\",\n      \"title\": \"## Structure\",\n      \"content\": \"- **Header (Reusable)**: Contains site name and navigation anchor links.\\n- **Home Page**: Single scrollable page with parallax sections displaying portfolio information, design philosophy, about content, and contact form.\\n- **Footer (Reusable)**: Contains contact details and social links.\"\n    }\n  ],\n  \"apps\": [\n    {\n      \"id\": \"wix-cms\",\n      \"keyFeatures\": [\n        { \"id\": \"view-portfolio-information\", \"name\": \"View Portfolio Information\" },\n        { \"id\": \"view-design-philosophy\", \"name\": \"View Design Philosophy\" },\n        { \"id\": \"view-about-information\", \"name\": \"View About Information\" },\n        { \"id\": \"contact-form\", \"name\": \"Contact Form\" }\n      ]\n    }\n  ],\n  \"version\": \"4.0.1\"\n}\n```"
+}
