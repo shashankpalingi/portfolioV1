@@ -2,17 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Image } from '@/components/ui/image';
-import { BaseCrudService } from '@/integrations';
+import { BaseCrudService } from '@/lib/mock-service';
 import { AboutMe } from '@/entities';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 
-const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
+const AnimatedElement: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -24,14 +24,14 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
       },
       { threshold: 0.1 }
     );
-    
+
     observer.observe(el);
     return () => observer.disconnect();
   }, [delay]);
-  
+
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       className={`${className || ''} opacity-0 translate-y-8 transition-all duration-700 ease-out`}
       style={{
         opacity: 0,
@@ -73,7 +73,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="relative py-24 px-4 bg-gradient-to-b from-background to-background/95">
         <div className="container mx-auto max-w-4xl">
@@ -102,7 +102,7 @@ export default function AboutPage() {
                   <div className="grid md:grid-cols-2 gap-8 items-center">
                     {aboutData.profileImage && (
                       <div className="rounded-2xl overflow-hidden shadow-2xl">
-                        <Image 
+                        <Image
                           src={aboutData.profileImage}
                           alt={aboutData.name || 'Profile'}
                           className="w-full h-auto hover:scale-105 transition-transform duration-500"
@@ -161,7 +161,7 @@ export default function AboutPage() {
                     <p className="text-foreground/70 font-paragraph mb-6">
                       Interested in working together? Get in touch.
                     </p>
-                    <a 
+                    <a
                       href={`mailto:${aboutData.contactEmail}`}
                       className="inline-block bg-primary text-accent font-heading px-8 py-4 rounded-full hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg"
                     >

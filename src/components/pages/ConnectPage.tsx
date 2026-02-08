@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { BaseCrudService } from '@/integrations';
+import { BaseCrudService } from '@/lib/mock-service';
 import { AboutMe } from '@/entities';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { Mail, MapPin, Clock, Send } from 'lucide-react';
@@ -9,13 +9,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
-const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
+const AnimatedElement: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -27,14 +27,14 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
       },
       { threshold: 0.1 }
     );
-    
+
     observer.observe(el);
     return () => observer.disconnect();
   }, [delay]);
-  
+
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       className={`${className || ''} opacity-0 translate-y-8 transition-all duration-700 ease-out`}
       style={{
         opacity: 0,
@@ -83,13 +83,13 @@ export default function ConnectPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', message: '' });
-      
+
       setTimeout(() => {
         setSubmitSuccess(false);
       }, 3000);
@@ -106,7 +106,7 @@ export default function ConnectPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="relative py-24 px-4 bg-gradient-to-b from-background to-background/95">
         <div className="container mx-auto max-w-4xl">
@@ -138,8 +138,8 @@ export default function ConnectPage() {
                       Get in Touch
                     </h2>
                     <p className="text-foreground/70 font-paragraph text-lg leading-relaxed">
-                      Whether you have a question, a project idea, or just want to say hello, 
-                      feel free to reach out. I&apos;m always open to discussing new opportunities 
+                      Whether you have a question, a project idea, or just want to say hello,
+                      feel free to reach out. I&apos;m always open to discussing new opportunities
                       and creative collaborations.
                     </p>
                   </div>
@@ -152,7 +152,7 @@ export default function ConnectPage() {
                         </div>
                         <div>
                           <h3 className="text-foreground font-heading text-lg mb-1">Email</h3>
-                          <a 
+                          <a
                             href={`mailto:${aboutData.contactEmail}`}
                             className="text-foreground/70 font-paragraph hover:text-primary transition-colors duration-200"
                           >
@@ -283,7 +283,7 @@ export default function ConnectPage() {
               <p className="text-foreground/70 font-paragraph text-lg mb-8">
                 Check out my portfolio to see what I&apos;ve been working on
               </p>
-              <a 
+              <a
                 href="/work"
                 className="inline-block bg-primary text-accent font-heading px-8 py-4 rounded-full hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg"
               >

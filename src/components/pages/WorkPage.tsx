@@ -2,19 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Image } from '@/components/ui/image';
-import { BaseCrudService } from '@/integrations';
+import { BaseCrudService } from '@/lib/mock-service';
 import { PortfolioProjects } from '@/entities';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { Calendar, User } from 'lucide-react';
 import { format } from 'date-fns';
 
-const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
+const AnimatedElement: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -26,14 +26,14 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
       },
       { threshold: 0.1 }
     );
-    
+
     observer.observe(el);
     return () => observer.disconnect();
   }, [delay]);
-  
+
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       className={`${className || ''} opacity-0 translate-y-8 transition-all duration-700 ease-out`}
       style={{
         opacity: 0,
@@ -73,7 +73,7 @@ export default function WorkPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="relative py-24 px-4 bg-gradient-to-b from-background to-background/95">
         <div className="container mx-auto max-w-4xl">
@@ -102,7 +102,7 @@ export default function WorkPage() {
                   <div className="group bg-background/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
                     {project.projectImage && (
                       <div className="aspect-video overflow-hidden relative">
-                        <Image 
+                        <Image
                           src={project.projectImage}
                           alt={project.projectTitle || 'Project'}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -114,7 +114,7 @@ export default function WorkPage() {
                       <h3 className="text-foreground font-heading text-xl md:text-2xl mb-3 group-hover:text-primary transition-colors duration-200">
                         {project.projectTitle}
                       </h3>
-                      
+
                       <div className="flex flex-wrap gap-4 mb-4 text-sm">
                         {project.clientName && (
                           <div className="flex items-center gap-2 text-primary font-paragraph">
@@ -131,7 +131,7 @@ export default function WorkPage() {
                           </div>
                         )}
                       </div>
-                      
+
                       <p className="text-foreground/70 font-paragraph leading-relaxed">
                         {project.description}
                       </p>
@@ -159,7 +159,7 @@ export default function WorkPage() {
               <p className="text-primary/80 font-paragraph text-lg mb-8">
                 Let&apos;s create something meaningful together
               </p>
-              <a 
+              <a
                 href="/connect"
                 className="inline-block bg-primary text-accent font-heading px-8 py-4 rounded-full hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg"
               >

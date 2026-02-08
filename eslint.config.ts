@@ -4,9 +4,6 @@ import eslintPluginAstro from 'eslint-plugin-astro';
 import importPlugin from 'eslint-plugin-import';
 import reactPlugin from 'eslint-plugin-react';
 import globals from 'globals';
-import useImageComponent from './eslint-rules/use-image-component';
-import fixEmptySelectItemValue from './eslint-rules/fix-empty-select-item-value';
-import noEarlyReturnBeforeScrollRef from './eslint-rules/no-early-return-before-scroll-ref';
 
 export default [
   ...eslintPluginAstro.configs.recommended,
@@ -18,13 +15,6 @@ export default [
       react: reactPlugin,
       '@typescript-eslint': tsPlugin,
       'import': importPlugin,
-      'custom': {
-        rules: {
-          'use-image-component': useImageComponent,
-          'fix-empty-select-item-value': fixEmptySelectItemValue,
-          'no-early-return-before-scroll-ref': noEarlyReturnBeforeScrollRef,
-        },
-      },
     },
     languageOptions: {
       parser: tsParser,
@@ -55,9 +45,6 @@ export default [
     },
     files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
     rules: {
-      'custom/use-image-component': 'error',
-      'custom/fix-empty-select-item-value': 'error',
-      'custom/no-early-return-before-scroll-ref': 'error',
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-unused-expressions': 'off',
@@ -74,33 +61,6 @@ export default [
       'import/no-unresolved': 'off',
       'import/named': 'error',
       'import/default': 'error',
-      'no-restricted-syntax': [
-        'error',
-        {
-          selector: 'JSXElement[openingElement.name.name="Route"] JSXText[value="Wix Vibe"]',
-          message: 'ROUTER NOT CONNECTED: The placeholder "<div>Wix Vibe</div>" must be replaced with your actual page component. FIX: 1) Import your page component (e.g., import { HomePage } from "./pages/HomePage"), 2) Replace element: <div>Wix Vibe</div> with element: <HomePage />',
-        },
-        {
-          selector: 'CallExpression[callee.name="createBrowserRouter"] JSXElement[openingElement.name.name="div"] JSXText[value="Wix Vibe"]',
-          message: 'ROUTER NOT CONNECTED: The placeholder "<div>Wix Vibe</div>" must be replaced with your actual page component. FIX: 1) Import your page component (e.g., import { HomePage } from "./pages/HomePage"), 2) Find the route with element: <div>Wix Vibe</div> and replace it with element: <HomePage />. Users will see blank content until this is fixed!',
-        },
-        {
-          selector:
-            'CallExpression[callee.name="createBrowserRouter"] > ArrayExpression.arguments ' +
-            '> ObjectExpression:has(Property[key.name="path"] > Literal[value="/"]) ' +
-            '> Property[key.name="errorElement"] > JSXElement > JSXOpeningElement:not([name.name="ErrorPage"])',
-          message: 'Root route errorElement must be <ErrorPage />.',
-        },
-        {
-          selector:
-            'Program:not(:has(ImportDeclaration[source.value="@/integrations/errorHandlers/ErrorPage"])) ' +
-            'CallExpression[callee.name="createBrowserRouter"] > ArrayExpression.arguments ' +
-            '> ObjectExpression:has(Property[key.name="path"] > Literal[value="/"]) ' +
-            '> Property[key.name="errorElement"] JSXOpeningElement[name.name="ErrorPage"]',
-          message: 'ErrorPage must be imported from "@/integrations/errorHandlers/ErrorPage".',
-        }
-      ],
-
     },
   },
   {
