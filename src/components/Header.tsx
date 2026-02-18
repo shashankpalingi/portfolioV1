@@ -19,7 +19,7 @@ export default function Header() {
           {/* Logo on the left */}
           <Link
             to="/"
-            className="absolute left-0 text-black font-heading text-2xl font-bold hover:text-primary transition-colors duration-200"
+            className="absolute left-0 text-[#F2E3CF] font-heading text-2xl font-bold hover:text-primary transition-colors duration-200"
           >
             :)
           </Link>
@@ -30,7 +30,7 @@ export default function Header() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-black hover:text-[#E35342] transition-colors duration-200 font-paragraph text-2xl font-medium ${location.pathname === item.path ? 'text-[#E35342]' : ''
+                className={`text-[#F2E3CF] hover:text-[#E35342] transition-colors duration-200 font-paragraph text-2xl font-medium ${location.pathname === item.path ? 'text-[#E35342]' : ''
                   }`}
               >
                 {item.name}
@@ -41,7 +41,7 @@ export default function Header() {
           {/* Mobile Menu Button - on the right */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden absolute right-0 text-black hover:text-[#E35342] transition-colors duration-200"
+            className="md:hidden absolute right-0 text-[#F2E3CF] hover:text-[#E35342] transition-colors duration-200"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -56,7 +56,7 @@ export default function Header() {
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`text-black hover:text-[#E35342] transition-colors duration-200 font-paragraph text-xl ${location.pathname === item.path ? 'text-[#E35342]' : ''
+                className={`text-[#F2E3CF] hover:text-[#E35342] transition-colors duration-200 font-paragraph text-xl ${location.pathname === item.path ? 'text-[#E35342]' : ''
                   }`}
               >
                 {item.name}

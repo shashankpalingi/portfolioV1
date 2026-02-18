@@ -107,7 +107,7 @@ export default function HomePage() {
         <>
 
           {/* --- Hero Section --- */}
-          <section className="relative bg-[#F2E3CF] overflow-hidden pt-8">
+          <section className="relative bg-[#212121] overflow-hidden pt-8">
             <Header />
 
             {/* Spiderman Overlay - Adjust positioning here:
@@ -115,7 +115,7 @@ export default function HomePage() {
                 right: horizontal position from section right
                 w: width of the image (e.g., w-[500px])
             */}
-            <motion.img
+            {/*<motion.img
               src="/chalk_images/spidyy.png"
               alt="Spiderman"
               className="absolute top-[-60px] right-[-26px] w-[400px] md:w-[300px] h-auto z-40 pointer-events-none origin-top-right transition-all duration-300"
@@ -125,7 +125,7 @@ export default function HomePage() {
                 // We'll let it be mostly static or subtlely move
                 // since syncing with the 3D tilt is complex
               }}
-            />
+            />*/}
 
             <ContainerScroll titleComponent={null}>
               <div className="relative h-full w-full grid md:grid-cols-2 gap-8 items-center p-8 md:p-16">
